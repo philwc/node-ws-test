@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WS Test</title>
+</head>
+<body>
+<h1>Websocket Test</h1>
+<pre id="messages"></pre>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<script>
+    var port = 3000;
+    var socket = io.connect("http://localhost:" + port);
+    socket.on('message', function (data) {
+        console.log(data);
+        $('#messages').append($('<li>').text(JSON.stringify(data)));
+    });
+</script>
+
+</body>
+</html>
